@@ -11,9 +11,11 @@ class User {
         this.email=builder.email;
     }
     public static Builder builder(){
+        // creates a new Builder class( which is a static class that does not need the User class instance) that's the only reason we are able to call Builder constructor
         return new Builder();
     }
     public static class Builder{
+        // static class means it doesnt need a User class instance to create Builder class and also gives access to private methods/constructors of User class
         public String email;
         public String name;
 
