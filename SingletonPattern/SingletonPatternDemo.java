@@ -2,13 +2,17 @@ package SingletonPattern;
 
 
 class Singleton {
-    private static Singleton instance;
+    private static volatile Singleton instance;
     private Singleton(){
         System.out.println("Creating a new Instance");
     }
     public static Singleton getInstance(){
         if(instance==null){
-            instance=new Singleton();
+            synchronized(Singleton.class){
+                if(instance==null){
+                    instance=new Singleton();
+                }
+            }
         }else{
             System.out.println("Instance already created. Fetching the singleton instance");
         }
